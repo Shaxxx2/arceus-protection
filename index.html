@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Verification</title>
+  <style>
+    body {
+      background-color: #0a0a0a;
+      color: #fff;
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 100px;
+    }
+    button {
+      background: #00d26a;
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: gray;
+    }
+  </style>
+  <script>
+    function enableNextStep() {
+      document.getElementById("continue").disabled = false;
+      document.getElementById("status").innerText = "✅ You're verified!";
+    }
+
+    function goToFinalLink() {
+      window.location.href = "https://direct-link.net/999029/arceus-x-executor";
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById("verify").disabled = false;
+      }, 8000);
+    };
+  </script>
+</head>
+<body>
+  <h1>🔒 Verification Required</h1>
+  <p>To access the download, wait a few seconds and verify you're human.</p>
+
+  <button id="verify" disabled onclick="enableNextStep()">I'm not a bot</button>
+  <p id="status" style="margin: 20px;"></p>
+  <button id="continue" disabled onclick="goToFinalLink()">Continue to Download</button>
+</body>
+</html>
